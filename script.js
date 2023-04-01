@@ -1,6 +1,11 @@
 
 let prato = '';
+let bebida = '';
+let sobremesa = '';
 
+let valorPrato = 0;
+let valorBebida = 0;
+let valorSobremesa = 0;
 
 function PratoSelecionado(botao) {
     const botaoAnterior = document.querySelector('.caixa-de-pratos .selecionado');
@@ -13,6 +18,15 @@ function PratoSelecionado(botao) {
     VerificaSelecao();
 
     prato = botao.querySelector('h4').innerHTML;
+    
+    let valorPratoErrado = botao.querySelector('h5').innerHTML;
+    valorPratoErrado = valorPratoErrado.replace('R$ ','').replace(',', '.')
+    
+    console.log(typeof(valorPratoErrado))
+    
+    valorPrato = parseFloat(valorPratoErrado);
+
+    console.log(typeof(valorPrato))
 }
 
 function BebidaSelecionada(botao) {
@@ -24,6 +38,12 @@ function BebidaSelecionada(botao) {
     botao.classList.add('selecionado');
     
     VerificaSelecao();
+
+    bebida = botao.querySelector('h4').innerHTML;
+    
+    let valorBebidaErrado = botao.querySelector('h5').innerHTML;
+    valorBebidaErrado = valorBebidaErrado.replace('R$','').replace(',','.')
+    valorBebida = parseFloat(valorBebidaErrado)
 }
 
 function SobremesaSelecionada(botao) {
@@ -35,6 +55,12 @@ function SobremesaSelecionada(botao) {
     botao.classList.add('selecionado');
 
     VerificaSelecao();
+
+    sobremesa = botao.querySelector('h4').innerHTML;
+    
+    let valorSobremesaErrado = botao.querySelector('h5').innerHTML;
+    valorSobremesaErrado = valorSobremesaErrado.replace('R$','').replace(',','.')
+    valorSobremesa = parseFloat(valorSobremesaErrado);
 }
 
 function VerificaSelecao () {
@@ -53,10 +79,18 @@ function VerificaSelecao () {
     }
 }
 
-const mensagem = 'Olá, gostaria de fazer o pedido:%0A' +
-    `Prato: ${prato}`
+function Whatsapp(estaVerde) {
 
+    let valor = valorPrato + valorBebida + valorSobremesa;
+    valor = valor.toFixed(2);
 
-function Whatsapp() {
-    window.location.href=`https://wa.me/+5599999999999?text=${mensagem}`;
+    const mensagem = 'Olá, gostaria de fazer o pedido: %0A' +
+    `-Prato: ${prato}%0A` +
+    `-Bebida: ${bebida}%0A` +
+    `-Sobremesa: ${sobremesa}` +
+    `-Total: ${valor}`;
+
+    if(estaVerde.classList.contains('confirmado')){
+    window.location.href=`https://wa.me/+5521979695328?text=${mensagem}`;
+    }
 }
