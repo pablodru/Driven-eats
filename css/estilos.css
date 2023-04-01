@@ -299,7 +299,7 @@ h5 {
     justify-content: center;
 }
 
-.footer div {
+.botao-footer {
     width:364px;
     height:61px;
     background-color:#CBCBCB;
@@ -338,4 +338,28 @@ ion-icon {
     bottom:15px;
     right:10px;
     display:block;
+}
+
+.confirmado {
+    width:364px;
+    height:61px;
+    background-color:#32B72F;
+    border-radius:50px;
+    
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
+    letter-spacing: 0.018em;
+    color:#ffffff;
+
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a {
+    text-decoration:none;
 }
