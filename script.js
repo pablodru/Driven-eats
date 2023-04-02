@@ -83,12 +83,13 @@ function Whatsapp(estaVerde) {
 
     let valor = valorPrato + valorBebida + valorSobremesa;
     valor = valor.toFixed(2);
+    valor = valor.replace('.', ',')
 
     const mensagem = 'Olá, gostaria de fazer o pedido: %0A' +
     `-Prato: ${prato}%0A` +
     `-Bebida: ${bebida}%0A` +
-    `-Sobremesa: ${sobremesa}` +
-    `-Total: ${valor}`;
+    `-Sobremesa: ${sobremesa}%0A` +
+    `-Total: R$ ${valor}`;
 
     if(estaVerde.classList.contains('confirmado')){
     window.location.href=`https://wa.me/+5521979695328?text=${mensagem}`;
